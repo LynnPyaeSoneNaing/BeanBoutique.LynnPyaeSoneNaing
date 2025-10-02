@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--
+  Bean Boutique — Home Page
+  Purpose: Landing page with hero, featured items, and guest offer modal.
+  Last updated: 2025-09-25
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bean Boutique — Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome (free 7.0.0) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <div class="container nav-inner">
+      <div class="brand"><i class="fa-solid fa-mug-hot" style="margin-right:8px;" aria-hidden="true"></i>Bean Boutique</div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span></button>
+      <nav class="nav-menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="coffee.html">Coffee</a></li>
+          <li><a href="equipment.html">Equipment</a></li>
+          <li><a href="eventsandworkshops.html">Events & Workshops</a></li>
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li class="auth-off"><a href="login.html">Login</a></li>
+          <li class="auth-off"><a href="register.html">Register</a></li>
+          <li class="auth-on hidden"><a href="profile.html">Profile</a></li>
+          <li class="auth-on hidden"><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Announcements Ticker -->
+  <section class="announcements-ticker" aria-label="Site announcements">
+    <div class="container">
+      <div class="ticker-viewport" aria-hidden="true">
+        <div class="ticker-track">
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+          <!-- duplicate sequence for seamless loop -->
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+        </div>
+      </div>
+      <p class="sr-only">Welcome to Bean Boutique – Freshly Roasted Coffee Every Day. Free delivery on orders over $50. Join our Events and Workshops to explore coffee culture.</p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main id="main-content" class="container" tabindex="-1">
+    <!-- Centered logo under navbar -->
+    <div class="logo-wrap">
+      <img src="../IMAGE/logo.png" alt="Bean Boutique Logo" style="width: 380px; max-width: 95%; height: auto;" />
+    </div>
+    <section class="hero">
+      <!-- Hero section -->
+      <h1>Welcome to Bean Boutique</h1>
+      <p class="muted">Bringing Myanmar’s Finest Beans to You.</p>
+      <div class="actions">
+        <a class="btn" href="coffee.html">Shop Coffee</a>
+        <a class="btn secondary" href="equipment.html">Brewing Gear</a>
+      </div>
+    </section>
+
+    <h2 class="section-title">Featured</h2>
+    <!-- Featured items grid -->
+    <div class="grid" id="featuredGrid"></div>
+
+    <!-- About Us -->
+    <section class="section" id="about">
+      <h2 class="section-title">About Us</h2>
+      <div class="two-col">
+        <div class="text">
+          <p>
+            Welcome to Bean Boutique – your destination for premium coffee and professional brewing equipment. Founded in 2025 and proudly based in Myanmar, we are passionate about bringing the rich flavors of locally grown beans to coffee lovers everywhere. Our mission is simple: to celebrate Myanmar’s unique coffee heritage while making specialty brewing tools accessible for everyone, from beginners to professionals.
+          </p>
+        </div>
+        <div class="image">
+          <img src="../IMAGE/Abtus.jpg" alt="About Bean Boutique" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Coffee -->
+    <section class="section" id="our-coffee">
+      <h2 class="section-title">Our Coffee</h2>
+      <div class="two-col reverse">
+        <div class="image">
+          <img src="../IMAGE/coffee.jpg" alt="Our Coffee" />
+        </div>
+        <div class="text">
+          <p>
+            At Bean Boutique, coffee is more than a drink – it’s a story. Each bean we source is grown in the fertile highlands of Myanmar, where generations of farmers carefully cultivate coffee with respect for the land and tradition. The result? Beans with distinctive aromas, smooth profiles, and bold flavors that reflect the heart of our country.
+          </p>
+          <ul>
+            <li>Single-origin beans from Myanmar’s finest farms</li>
+            <li>Freshly roasted for peak flavor</li>
+            <li>Sustainable sourcing that supports local farmers</li>
+          </ul>
+          <div class="actions" style="margin-top: 10px;">
+            <a class="btn" href="coffee.html">Explore Our Coffee</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Equipment -->
+    <section class="section" id="our-equipment">
+      <h2 class="section-title">Our Equipment</h2>
+      <div class="two-col">
+        <div class="text">
+          <p>
+            The perfect cup starts with the right tools. That’s why we offer a curated selection of high-quality coffee equipment designed to bring out the best in every brew. Whether you’re looking for a simple pour-over set, a professional-grade grinder, or espresso accessories, we’ve got you covered.
+          </p>
+          <ul>
+            <li>Brewing tools for every method – from drip to espresso</li>
+            <li>Reliable, stylish, and easy-to-use equipment</li>
+            <li>Trusted by baristas and coffee enthusiasts alike</li>
+          </ul>
+          <div class="actions" style="margin-top: 10px;">
+            <a class="btn" href="equipment.html">Explore Our Equipment</a>
+          </div>
+        </div>
+        <div class="image">
+          <img src="../IMAGE/Equi.jpg" alt="Our Equipment" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Events & Workshops -->
+    <section class="section" id="events-workshops">
+      <h2 class="section-title">Events & Workshops</h2>
+      <div class="two-col">
+        <div class="text">
+          <p>
+            At Bean Boutique, we believe coffee is best enjoyed together. That’s why we host workshops and events designed to inspire beginners, home brewers, and professional baristas alike. Whether you join us in Yangon, Mandalay, or online, you’ll discover the art and science of coffee in a fun, hands-on way.
+          </p>
+          <div class="actions">
+            <a class="btn" href="eventsandworkshops.html">Explore Events & Workshops</a>
+          </div>
+        </div>
+        <div class="image">
+          <img src="../IMAGE/Events.jpg" alt="Events and Workshops" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section class="section alt" id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="two-col contact">
+        <div class="text">
+          <form class="panel contact-form" id="contactForm" novalidate>
+            <div class="field">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" name="name" aria-required="true" required aria-describedby="contactNameHelp contactNameError" />
+              <em id="contactNameHelp" class="muted">Enter your full name.</em>
+              <p id="contactNameError" class="sr-only" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" aria-required="true" required aria-describedby="contactEmailHelp contactEmailError" />
+              <em id="contactEmailHelp" class="muted">Use a valid email address (e.g., name@example.com)</em>
+              <p id="contactEmailError" class="sr-only" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" rows="4" aria-required="true" required aria-describedby="contactMessageHelp contactMessageError"></textarea>
+              <em id="contactMessageHelp" class="muted">Provide details about your inquiry.</em>
+              <p id="contactMessageError" class="sr-only" aria-live="polite"></p>
+            </div>
+            <div id="contactFormStatus" class="sr-only" role="status" aria-live="polite"></div>
+            <div class="actions">
+              <button class="btn" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="image">
+          <div class="panel">
+            <p><i class="fa-solid fa-phone" aria-hidden="true"></i> <strong>Phone:</strong> +95 9 123 456 789</p>
+            <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> hello@beanboutique.mm</p>
+            <div class="socials">
+              <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+              <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+              <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="brand">Bean Boutique</div>
+      <div class="muted">© <span id="year"></span> All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Guest offer modal -->
+  <div class="modal-backdrop" id="offerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle">
+    <div class="modal" role="document">
+      <h3 id="offerModalTitle">Register now and get 10% off!</h3>
+      <p class="muted">Join the Bean Club for exclusive offers and events.</p>
+      <div class="right actions">
+        <button class="btn secondary" data-close-offer aria-label="Close offer">Maybe later</button>
+        <a class="btn" href="register.html">Register</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+  Bean Boutique — Events & Workshops Page
+  Purpose: Lists events and workshops and allows joining (requires login).
+  Last updated: 2025-09-25
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bean Boutique — Events & Workshops</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome (free 7.0.0) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <div class="container nav-inner">
+      <div class="brand"><i class="fa-solid fa-mug-hot" style="margin-right:8px;" aria-hidden="true"></i>Bean Boutique</div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span></button>
+      <nav class="nav-menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="coffee.html">Coffee</a></li>
+          <li><a href="equipment.html">Equipment</a></li>
+          <li><a href="eventsandworkshops.html">Events & Workshops</a></li>
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li class="auth-off"><a href="login.html">Login</a></li>
+          <li class="auth-off"><a href="register.html">Register</a></li>
+          <li class="auth-on hidden"><a href="profile.html">Profile</a></li>
+          <li class="auth-on hidden"><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- Announcements Ticker -->
+  <section class="announcements-ticker" aria-label="Site announcements">
+    <div class="container">
+      <div class="ticker-viewport" aria-hidden="true">
+        <div class="ticker-track">
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+        </div>
+      </div>
+      <p class="sr-only">Welcome to Bean Boutique – Freshly Roasted Coffee Every Day. Free delivery on orders over $50. Join our Events and Workshops to explore coffee culture.</p>
+    </div>
+  </section>
+  <!-- Main content -->
+  <main id="main-content" class="container" tabindex="-1">
+    <h1 style="font-family: Pacifico, cursive; color: var(--coffee);">Events & Workshops</h1>
+
+    <!-- Events list -->
+    <section class="section">
+      <h2 class="section-title">Events</h2>
+      <div id="eventsList" class="grid"></div>
+    </section>
+
+    <!-- Workshops list -->
+    <section class="section alt">
+      <h2 class="section-title">Workshops</h2>
+      <div id="workshopsList" class="grid"></div>
+    </section>
+  </main>
+
+  <!-- Join Modal -->
+  <div id="joinModalBackdrop" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" role="document" aria-labelledby="joinModalTitle">
+      <h3 id="joinModalTitle">Join Event / Workshop</h3>
+      <form id="joinForm" novalidate>
+        <input type="hidden" name="itemType" id="joinItemType" />
+        <input type="hidden" name="itemId" id="joinItemId" />
+        <div class="field">
+          <label for="joinFirst">First Name</label>
+          <input id="joinFirst" name="firstName" type="text" aria-required="true" required aria-describedby="joinFirstHelp joinFirstError" placeholder="Enter your first name" />
+          <em id="joinFirstHelp" class="muted">Provide your given name.</em>
+          <small id="joinFirstError" class="muted" style="color: var(--danger); display:none;" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="joinLast">Last Name</label>
+          <input id="joinLast" name="lastName" type="text" aria-required="true" required aria-describedby="joinLastHelp joinLastError" placeholder="Enter your last name" />
+          <em id="joinLastHelp" class="muted">Provide your family name.</em>
+          <small id="joinLastError" class="muted" style="color: var(--danger); display:none;" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="joinEmail">Email</label>
+          <input id="joinEmail" name="email" type="email" aria-required="true" required aria-describedby="joinEmailHelp joinEmailError" placeholder="you@example.com" />
+          <em id="joinEmailHelp" class="muted">Use a valid email address (e.g., name@example.com)</em>
+          <small id="joinEmailError" class="muted" style="color: var(--danger); display:none;" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="joinPhone">Phone Number</label>
+          <input id="joinPhone" name="phone" type="tel" aria-required="true" required aria-describedby="joinPhoneHelp joinPhoneError" placeholder="Digits only" inputmode="numeric" />
+          <em id="joinPhoneHelp" class="muted">Enter 7–15 digits, numbers only.</em>
+          <small id="joinPhoneError" class="muted" style="color: var(--danger); display:none;" aria-live="polite"></small>
+        </div>
+        <div class="actions right">
+          <button type="button" class="btn secondary" data-cancel-join>Cancel</button>
+          <button type="submit" class="btn" id="joinSubmit" disabled>Join</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="brand">Bean Boutique</div>
+      <div class="muted">© <span id="year"></span> All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Inline map injection for Workshops (visual only; no logic changes) -->
+  <script>
+    (function () {
+      // Coordinates for Yangon and Mandalay
+      const coords = {
+        yangon: { lat: 16.7828353, lng: 96.1585574 },
+        mandalay: { lat: 21.9414240, lng: 96.0916363 }
+      };
+
+      // Build a Google Maps embed iframe URL without API key
+      function buildMapSrc(lat, lng, zoom = 14) {
+        // Using q=lat,lng is lightweight and free for embed
+        return `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
+      }
+
+      function injectWorkshopMaps() {
+        const list = document.getElementById('workshopsList');
+        if (!list || !list.children || list.children.length === 0) return false;
+
+        // For each workshop card, add a map below its location if it's Yangon or Mandalay
+        Array.from(list.querySelectorAll('.card')).forEach(card => {
+          const titleEl = card.querySelector('h3');
+          const locEl = card.querySelector('.muted'); // first muted line is Location
+          if (!titleEl || !locEl) return;
+
+          const title = (titleEl.textContent || '').toLowerCase();
+          const locText = (locEl.textContent || '').toLowerCase();
+
+          let city = null;
+          if (title.includes('yangon') || locText.includes('yangon')) city = 'yangon';
+          else if (title.includes('mandalay') || locText.includes('mandalay')) city = 'mandalay';
+
+          // Skip online or other workshops
+          if (!city) return;
+
+          // Prevent duplicate insertion if this re-runs
+          if (card.querySelector('.map-embed')) return;
+
+          const mapWrap = document.createElement('div');
+          mapWrap.className = 'map-embed';
+          mapWrap.setAttribute('role', 'region');
+          mapWrap.setAttribute('aria-label', `Map for ${city} workshop location`);
+
+          const iframe = document.createElement('iframe');
+          iframe.src = buildMapSrc(coords[city].lat, coords[city].lng, 14);
+          iframe.loading = 'lazy';
+          iframe.referrerPolicy = 'no-referrer-when-downgrade';
+          iframe.setAttribute('aria-hidden', 'true');
+          iframe.tabIndex = -1;
+          iframe.style.border = '0';
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+
+          mapWrap.appendChild(iframe);
+
+          // Insert directly after the location text
+          const body = card.querySelector('.card-body') || card;
+          if (locEl && body) {
+            // Place after the location line
+            locEl.insertAdjacentElement('afterend', mapWrap);
+          } else if (body) {
+            body.appendChild(mapWrap);
+          }
+        });
+        return true;
+      }
+
+      // Ensure we run after the main script has rendered the lists
+      function ready(fn) {
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+          setTimeout(fn, 0);
+        } else {
+          document.addEventListener('DOMContentLoaded', fn);
+        }
+      }
+
+      ready(function () {
+        // Try immediately, then retry a few times in case render happens concurrently
+        let attempts = 0;
+        const maxAttempts = 10;
+        const timer = setInterval(() => {
+          attempts++;
+          const done = injectWorkshopMaps();
+          if (done || attempts >= maxAttempts) clearInterval(timer);
+        }, 120);
+      });
+    })();
+  </script>
+</body>
+</html>

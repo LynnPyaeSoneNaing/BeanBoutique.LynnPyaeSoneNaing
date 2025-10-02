@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+  Bean Boutique — Checkout Page
+  Purpose: Collects shipping/payment and places an order from the cart.
+  Last updated: 2025-09-25
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bean Boutique — Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome (free 7.0.0) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <div class="container nav-inner">
+      <div class="brand"><i class="fa-solid fa-mug-hot" style="margin-right:8px;" aria-hidden="true"></i>Bean Boutique</div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span></button>
+      <nav class="nav-menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="coffee.html">Coffee</a></li>
+          <li><a href="equipment.html">Equipment</a></li>
+          <li><a href="eventsandworkshops.html">Events & Workshops</a></li>
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li class="auth-off"><a href="login.html">Login</a></li>
+          <li class="auth-off"><a href="register.html">Register</a></li>
+          <li class="auth-on hidden"><a href="profile.html">Profile</a></li>
+          <li class="auth-on hidden"><button class="btn link" id="logoutBtn">Logout</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Announcements Ticker -->
+  <section class="announcements-ticker" aria-label="Site announcements">
+    <div class="container">
+      <div class="ticker-viewport" aria-hidden="true">
+        <div class="ticker-track">
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+        </div>
+      </div>
+      <p class="sr-only">Welcome to Bean Boutique – Freshly Roasted Coffee Every Day. Free delivery on orders over $50. Join our Events and Workshops to explore coffee culture.</p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main id="main-content" class="container" tabindex="-1">
+    <h1>Checkout</h1>
+    <!-- Checkout form -->
+    <form id="checkoutForm" class="panel" style="max-width:640px;" novalidate>
+      <div class="field">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" name="fullName" type="text" aria-required="true" required aria-describedby="fullNameError" />
+        <small id="fullNameError" class="sr-only" aria-live="polite"></small>
+      </div>
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" aria-required="true" required aria-describedby="phoneHelp phoneError" />
+        <em id="phoneHelp" class="muted">Digits only, 7–15 characters.</em>
+        <small id="phoneError" class="sr-only" aria-live="polite"></small>
+      </div>
+      <div class="field">
+        <label for="postal">Postal Code</label>
+        <input id="postal" name="postal" type="text" inputmode="numeric" aria-required="true" required aria-describedby="postalHelp postalError" />
+        <em id="postalHelp" class="muted">Your area postal/ZIP code.</em>
+        <small id="postalError" class="sr-only" aria-live="polite"></small>
+      </div>
+      <div class="field">
+        <label for="address">Shipping Address</label>
+        <textarea id="address" name="address" rows="3" aria-required="true" required aria-describedby="addressHelp addressError"></textarea>
+        <em id="addressHelp" class="muted">Include street, city, region, and postal code.</em>
+        <small id="addressError" class="sr-only" aria-live="polite"></small>
+      </div>
+      <div class="field">
+        <label for="payment">Payment Method</label>
+        <select id="payment" name="payment" aria-required="true" required aria-describedby="paymentHelp paymentError">
+          <option value="Card">Card</option>
+          <option value="Cash on Delivery">Cash on Delivery</option>
+        </select>
+        <em id="paymentHelp" class="muted">Select your preferred payment option.</em>
+        <small id="paymentError" class="sr-only" aria-live="polite"></small>
+      </div>
+      <div class="actions right">
+        <button class="btn success" type="submit">Place Order</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="brand">Bean Boutique</div>
+      <div class="muted">© <span id="year"></span> All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
+

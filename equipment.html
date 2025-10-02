@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+  Bean Boutique — Equipment Page
+  Purpose: Displays brewing equipment catalog grid and add-to-cart actions.
+  Last updated: 2025-09-18
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bean Boutique — Equipment</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome (free 7.0.0) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <div class="container nav-inner">
+      <div class="brand"><i class="fa-solid fa-mug-hot" style="margin-right:8px;" aria-hidden="true"></i>Bean Boutique</div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span></button>
+      <nav class="nav-menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="coffee.html">Coffee</a></li>
+          <li><a href="equipment.html">Equipment</a></li>
+          <li><a href="eventsandworkshops.html">Events & Workshops</a></li>
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li class="auth-off"><a href="login.html">Login</a></li>
+          <li class="auth-off"><a href="register.html">Register</a></li>
+          <li class="auth-on hidden"><a href="profile.html">Profile</a></li>
+          <li class="auth-on hidden"><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Announcements Ticker -->
+  <section class="announcements-ticker" aria-label="Site announcements">
+    <div class="container">
+      <div class="ticker-viewport" aria-hidden="true">
+        <div class="ticker-track">
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+        </div>
+      </div>
+      <p class="sr-only">Welcome to Bean Boutique – Freshly Roasted Coffee Every Day. Free delivery on orders over $50. Join our Events and Workshops to explore coffee culture.</p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main id="main-content" class="container" tabindex="-1">
+    <h1>Brewing Equipment</h1>
+    <div class="product-search" role="search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="text" id="searchEquipment" placeholder="Search equipment..." aria-label="Search equipment" />
+    </div>
+    <!-- Equipment catalog grid -->
+    <div class="grid" id="equipmentGrid"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="brand">Bean Boutique</div>
+      <div class="muted">© <span id="year"></span> All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
+

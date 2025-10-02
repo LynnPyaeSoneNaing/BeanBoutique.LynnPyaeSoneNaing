@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+  Bean Boutique — Login Page
+  Purpose: Email/password login, optional Google (Firebase) and Telegram demos, with reCAPTCHA placeholder.
+  Last updated: 2025-09-25
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bean Boutique — Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome (free 7.0.0) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script>
+    // Replace with your Firebase project config to enable real Google Login
+    window.BB_FIREBASE_CONFIG = window.BB_FIREBASE_CONFIG || null;
+  </script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <div class="container nav-inner">
+      <div class="brand"><i class="fa-solid fa-mug-hot" style="margin-right:8px;" aria-hidden="true"></i>Bean Boutique</div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span></button>
+      <nav class="nav-menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="coffee.html">Coffee</a></li>
+          <li><a href="equipment.html">Equipment</a></li>
+          <li><a href="eventsandworkshops.html">Events & Workshops</a></li>
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li class="auth-off"><a href="login.html">Login</a></li>
+          <li class="auth-off"><a href="register.html">Register</a></li>
+          <li class="auth-on hidden"><a href="profile.html">Profile</a></li>
+          <li class="auth-on hidden"><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Announcements Ticker -->
+  <section class="announcements-ticker" aria-label="Site announcements">
+    <div class="container">
+      <div class="ticker-viewport" aria-hidden="true">
+        <div class="ticker-track">
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+          <span class="ticker-item">☕ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day!</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🚚 Free delivery on orders over $50.</span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item">🎉 Join our Events & Workshops to explore coffee culture.</span>
+        </div>
+      </div>
+      <p class="sr-only">Welcome to Bean Boutique – Freshly Roasted Coffee Every Day. Free delivery on orders over $50. Join our Events and Workshops to explore coffee culture.</p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main id="main-content" class="container" tabindex="-1">
+    <h1 style="font-family: Pacifico, cursive; color: var(--coffee);">Login</h1>
+    <div class="panel" style="max-width:520px;">
+      <!-- Email/password login form -->
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" name="email" aria-required="true" required aria-describedby="loginEmailHelp loginEmailError" />
+          <em id="loginEmailHelp" class="muted">Enter a valid email address (e.g., name@example.com)</em>
+          <small id="loginEmailError" class="muted" style="color: var(--danger); display:none;" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" aria-required="true" required aria-describedby="loginPasswordHelp loginPasswordError" />
+          <em id="loginPasswordHelp" class="muted">Enter your account password.</em>
+          <small id="loginPasswordError" class="muted" style="color: var(--danger); display:none;" aria-live="polite"></small>
+        </div>
+        <!-- Google reCAPTCHA v2 widget (replace SITE_KEY with your actual site key from Google reCAPTCHA admin) -->
+        <div class="field" style="margin-top:6px;">
+          <span id="loginCaptchaLabel" class="sr-only">reCAPTCHA verification</span>
+          <div class="g-recaptcha" data-sitekey="6LcpzdQrAAAAAJVGWXIA36OM9Wf0EnXbyWa9lqGJ" data-theme="light" role="group" aria-labelledby="loginCaptchaLabel" aria-describedby="loginCaptchaError"></div>
+          <small id="loginCaptchaError" class="muted" style="color: var(--danger); display:none;" aria-live="polite"></small>
+          <!-- Backend verification requires SECRET_KEY on the server: 6LcpzdQrAAAAAAg0A19hQ7nfu_eCMTEuf3pth-fC -->
+        </div>
+        <div class="actions right" style="margin-top:10px;">
+          <button class="btn" type="submit">Login</button>
+        </div>
+      </form>
+
+      <div class="center" style="margin:14px 0; display:flex; flex-direction:column; gap:8px;">
+        <!-- Fake social buttons -->
+        <button class="btn secondary" id="googleLogin" type="button">Continue with Google</button>
+        <button class="btn secondary" id="facebookLogin" type="button">Continue with Facebook</button>
+      </div>
+
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="brand">Bean Boutique</div>
+      <div class="muted">© <span id="year"></span> All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
+
